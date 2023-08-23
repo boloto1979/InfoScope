@@ -20,7 +20,7 @@ Domain monitoring and analysis tool. With InfoScope, you can look up WHOIS infor
 3. Run the program using the following command:
 
     ```
-    python infoscope.py
+    python3 infoscope.py
     ```
     
 ## Disclaimer

@@ -1,10 +1,12 @@
 import socket
 import whois
-import random
+from colorama import Fore
+import webbrowser
+import sys
 from termcolor import colored
 
 logo = (
-    "                     ⠀⠀⠀⠀⠀                       ⠀⠀⠀⠀⠀\n"
+    "\n"
     "                     ⠀⠀⠀⠀⠀⣀⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣀⠀⠀⠀⠀⠀⠀\n"
     "                     ⠀⠀⠀⣠⡞⠁⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢳⡄⠀⠀⠀⠀\n"
     "                     ⠀⠀⣴⡟⠀⠀⠀⣠⡞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢦⡀⠀⠀⢿⣆⠀⠀⠀\n"
@@ -25,6 +27,12 @@ logo = (
     "  ██║██║╚████║██╔══╝░░██║░░██║░╚═══██╗██║░░██╗██║░░██║██╔═══╝░██╔══╝░░\n"
     "  ██║██║░╚███║██║░░░░░╚█████╔╝██████╔╝╚█████╔╝╚█████╔╝██║░░░░░███████╗\n"
     "  ╚═╝╚═╝░░╚══╝╚═╝░░░░░░╚════╝░╚═════╝░░╚════╝░░╚════╝░╚═╝░░░░░╚══════╝\n"
+    "                       "+Fore.LIGHTRED_EX+"["+Fore.LIGHTWHITE_EX+"::"+Fore.LIGHTRED_EX+"] "+Fore.LIGHTWHITE_EX+"Select an Option "+Fore.LIGHTRED_EX+"["+Fore.LIGHTWHITE_EX+"::"+Fore.LIGHTRED_EX+"]\n"
+    "\n"
+    "                       "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"1"+Fore.LIGHTWHITE_EX+"] Monitor a server.\n"
+    "                    "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"2"+Fore.LIGHTWHITE_EX+"] Insert existing domain.\n"
+    "\n"
+    "                    "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"help"+Fore.LIGHTWHITE_EX+"] Help.    ["+Fore.LIGHTRED_EX+"exit"+Fore.LIGHTWHITE_EX+"] Exit.\n"
 )
 
 def get_ip_address(domain):
@@ -59,11 +67,7 @@ if __name__ == "__main__":
     print(colored(logo, 'red'))
 
     while True:
-        print("Choose an option:")
-        print("1. Monitor a server")
-        print("2. Insert existing domain")
-        
-        choice = input("Option: ")
+        choice = input("infoscope> ")
 
         if choice == "1":
             ip_address = input("Enter the IP address of the server: ")
@@ -86,5 +90,12 @@ if __name__ == "__main__":
             else:
                 print(f"Unable to get WHOIS information for the domain {domain}")
         
+        elif choice.lower() == "help":
+            webbrowser.open("https://github.com/boloto1979/InfoScope")
+
+        elif choice.lower() == "exit":
+            print("Exiting InfoScope. Goodbye!")
+            sys.exit()
+
         else:
             print("Invalid option. Please choose a valid option.")
