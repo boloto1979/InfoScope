@@ -4,6 +4,10 @@ from colorama import Fore
 import webbrowser
 import sys
 from termcolor import colored
+import os
+import random
+import logging
+
 
 logo = (
     "\n"
@@ -32,8 +36,10 @@ logo = (
     "                       "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"1"+Fore.LIGHTWHITE_EX+"] Monitor a server.\n"
     "                    "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"2"+Fore.LIGHTWHITE_EX+"] Insert existing domain.\n"
     "\n"
-    "                    "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"help"+Fore.LIGHTWHITE_EX+"] Help.    ["+Fore.LIGHTRED_EX+"exit"+Fore.LIGHTWHITE_EX+"] Exit.\n"
+    "          "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"help"+Fore.LIGHTWHITE_EX+"] Help.    ["+Fore.LIGHTRED_EX+"exit"+Fore.LIGHTWHITE_EX+"] Exit.     ["+Fore.LIGHTRED_EX+"clear"+Fore.LIGHTWHITE_EX+"] Clear.\n"
 )
+
+logging.basicConfig(filename='infoscope.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_ip_address(domain):
     try:
@@ -73,7 +79,12 @@ if __name__ == "__main__":
             ip_address = input("Enter the IP address of the server: ")
             port = int(input("Enter port to monitor: "))
             
+            if port == 0:
+                port = random.randint(1024, 49151)
+                print(f"Using random port: {port}")
+            
             start_tracking_server(ip_address, port)
+            logging.info(f"Started tracking server on {ip_address}:{port}")
         
         elif choice == "2":
             domain = input("Enter the domain you want to search for information: ")
@@ -95,7 +106,12 @@ if __name__ == "__main__":
 
         elif choice.lower() == "exit":
             print("Exiting InfoScope. Goodbye!")
+            logging.info("Exiting InfoScope")
             sys.exit()
+
+        if choice.lower() == "clear":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(colored(logo, 'red'))
 
         else:
             print("Invalid option. Please choose a valid option.")
