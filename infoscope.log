@@ -1,0 +1,26 @@
+2023-08-25 18:29:03,648 - INFO - Exiting InfoScope
+2023-08-25 20:19:50,230 - INFO - Exiting InfoScope
+2023-08-29 12:46:13,599 - INFO - Trace server started on 127.0.0.1:8080
+2023-08-29 12:46:29,378 - INFO - Connection received from 127.0.0.1:47408
+2023-08-29 12:46:37,180 - INFO - Connection received from 127.0.0.1:36218
+2023-08-29 12:46:38,242 - INFO - Connection received from 127.0.0.1:36226
+2023-08-29 12:46:41,531 - INFO - Connection received from 127.0.0.1:36234
+2023-08-29 12:46:41,699 - INFO - Connection received from 127.0.0.1:36242
+2023-08-29 12:46:45,261 - INFO - Connection received from 127.0.0.1:56342
+2023-08-29 12:46:45,398 - INFO - Connection received from 127.0.0.1:56354
+2023-08-29 12:58:17,895 - ERROR - Error: [Errno -2] Name or service not known
+2023-08-29 12:58:17,895 - INFO - Started tracking server on http://127.0.0.1:4040
+2023-08-29 12:59:10,926 - INFO - Trace server started on 127.0.0.1:8080
+2023-08-29 12:59:24,652 - INFO - Connection received from 127.0.0.1:47496 at 2023-08-29 12:59:24.651592
+2023-08-29 12:59:40,500 - INFO - Connection received from 127.0.0.1:46726 at 2023-08-29 12:59:40.500282
+2023-08-29 12:59:40,636 - INFO - Connection received from 127.0.0.1:46734 at 2023-08-29 12:59:40.636142
+2023-08-29 13:00:27,139 - INFO - Connection received from 127.0.0.1:50436 at 2023-08-29 13:00:27.139409
+2023-08-29 13:00:27,285 - INFO - Connection received from 127.0.0.1:50444 at 2023-08-29 13:00:27.284976
+2023-08-29 13:00:28,925 - INFO - Connection received from 127.0.0.1:50448 at 2023-08-29 13:00:28.925406
+2023-08-29 13:00:29,057 - INFO - Connection received from 127.0.0.1:50464 at 2023-08-29 13:00:29.057482
+2023-08-29 13:00:31,511 - INFO - Connection received from 127.0.0.1:50480 at 2023-08-29 13:00:31.511509
+2023-08-29 13:00:31,645 - INFO - Connection received from 127.0.0.1:50482 at 2023-08-29 13:00:31.645066
+2023-08-29 13:02:56,016 - INFO - Exiting InfoScope
+2023-08-29 13:04:37,753 - ERROR - Error: [Errno 13] Permission denied
+2023-08-29 13:04:37,753 - INFO - Started tracking server on 192.168.0.25:80
+2023-08-29 13:09:09,043 - INFO - Trace server started on 192.168.0.25:80

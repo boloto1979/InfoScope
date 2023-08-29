@@ -2,3 +2,5 @@ socket
 whois
 termcolor
 colorama
+psutil
+python-whois

@@ -1,4 +1,7 @@
-![Demonstration](./img/img.png)<br><br>
+# InfoScope - Domain Monitoring and Analysis Tool
+
+![Demonstration](./img/img.png)
+
 Domain monitoring and analysis tool. With InfoScope, you can look up WHOIS information, find a domain's IP address, and even monitor connections to a specific server. Explore domain details and track connections simply and effectively.
 
 ## Features
@@ -11,6 +14,7 @@ Domain monitoring and analysis tool. With InfoScope, you can look up WHOIS infor
 ## Getting Started
 
 1. Clone this repository to your local machine.
+
 2. Install the required dependencies using the following command:
 
     ```
