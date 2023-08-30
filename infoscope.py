@@ -9,7 +9,7 @@ import random
 import logging
 import psutil
 from datetime import datetime
-
+import signal
 
 logo = (
     "\n"
@@ -41,6 +41,7 @@ logo = (
     "                      "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"3"+Fore.LIGHTWHITE_EX+"] Info Network.\n"
     "                      "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"4"+Fore.LIGHTWHITE_EX+"] Block IP Address.\n"
     "                      "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"5"+Fore.LIGHTWHITE_EX+"] Unblock IP address.\n"
+    "                      "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"6"+Fore.LIGHTWHITE_EX+"] Scan Open Ports.\n"
     "\n"
     "          "+Fore.LIGHTWHITE_EX+" ["+Fore.LIGHTRED_EX+"help"+Fore.LIGHTWHITE_EX+"] Help.    ["+Fore.LIGHTRED_EX+"exit"+Fore.LIGHTWHITE_EX+"] Exit.     ["+Fore.LIGHTRED_EX+"clear"+Fore.LIGHTWHITE_EX+"] Clear.\n"
 )
@@ -86,8 +87,35 @@ def start_tracking_server(ip_address, port):
             print(f"Error: {e}")
             logging.error(f"Error: {e}")
 
+def handle_sigint(signum, frame):
+    print("\nReceived SIGINT. Exiting InfoScope. Goodbye!")
+    logging.info("Received SIGINT. Exiting InfoScope.")
+    sys.exit(0)
+
+def scan_open_ports(ip_address):
+    try:
+        print(f"Scanning open ports for {ip_address}")
+        open_ports = []
+        
+        for port in range(1, 65536):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)
+            result = sock.connect_ex((ip_address, port))
+            if result == 0:
+                open_ports.append(port)
+            sock.close()
+        
+        if open_ports:
+            print(f"Open ports for {ip_address}: {open_ports}")
+        else:
+            print(f"No open ports found for {ip_address}")
+    except socket.gaierror:
+        print("Invalid IP address")
+
 if __name__ == "__main__":
     print(colored(logo, 'red'))
+
+    signal.signal(signal.SIGINT, handle_sigint)
 
     while True:
         choice = input("infoscope> ")
@@ -153,6 +181,10 @@ if __name__ == "__main__":
                 print(f"Unblocked IP: {blocked_ip}")
             else:
                 print(f"IP address {blocked_ip} not found in blocked list.")
+
+        elif choice == "6":
+            ip_address = input("Enter the IP address to scan for open ports: ")
+            scan_open_ports(ip_address)
 
         else:
             print("Invalid option. Please choose a valid option.")
